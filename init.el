@@ -1,8 +1,13 @@
+
+;; package-refresh-contents
 (package-initialize)
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
 
-;; 
+;; sudo apt install sbcl
+;; sudo apt install slime
+;; sudo apt install common-lisp-controller
+;; package-install RET slime
 ;; slime
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
