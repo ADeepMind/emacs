@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: head
+# key: head
+# --
+#+TITLE:
+#+AUTHOR: Bei Fang
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style.css"/>
+#+OPTIONS: ^:nil
+[[https://adeepmind.github.io/index.html][home]]
