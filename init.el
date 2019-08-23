@@ -4,7 +4,6 @@
 (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
 (package-initialize)
 
-(require 'company-lsp)
 
 ;;company
 (use-package company
@@ -13,7 +12,7 @@
   (global-company-mode t)
   (setq company-idle-delay 0)
   (setq company-show-numbers t)
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 3)
   (setq company-backends
         '((company-files
            company-keywords
@@ -30,10 +29,13 @@
   :hook ((c++-mode c-mode) . lsp-deferred)
   :commands (lsp lsp-deferred))
 
+(use-package yasnippet
+  :ensure t
+  :config (yas-global-mode 1))
+
 (use-package flycheck
   :ensure t
   :config (global-flycheck-mode))
-
 
 ;; sudo apt install sbcl
 ;; sudo apt install slime
@@ -70,13 +72,18 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-tabnine-use-native-json t)
+ '(company-tabnine-use-native-json nil)
+ '(custom-enabled-themes (quote (adwaita)))
+ '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (company-tabnine company-lsp lsp-clangd ccls use-package cquery flycheck lsp-ui lsp-mode evil-nerd-commenter htmlize yasnippet slime))))
+    (company company-c-headers company-tabnine company-lsp lsp-clangd ccls use-package cquery flycheck lsp-ui lsp-mode evil-nerd-commenter htmlize yasnippet slime)))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "WenQuanYi Zen Hei Mono" :foundry "WenQ" :slant normal :weight normal :height 128 :width normal)))))
