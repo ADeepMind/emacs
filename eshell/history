@@ -1,0 +1,41 @@
+cd ~/important/shell/
+g++ test.cc 
+./a.out 
+g++ test.cc 
+./a.out 
+g++ test.cc 
+g++ test.cc 
+g++ test.cc 
+g++ test.cc 
+./a.out 
+g++ test.cc 
+g++ test.cc 
+asd
+g++ test.cc 
+./a.out 
+g++ test.cc 
+./a.out 
+ls
+ls
+ls
+ls
+as
+sa
+g++ lcs.cc
+g++ print_lcs.cc 
+./a.out 
+g++ print_lcs.cc 
+./a.out 
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+ls
+clear
+ls
+ks

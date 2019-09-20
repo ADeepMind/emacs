@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+unsigned srl(unsigned x, int k) {
+  
+}
+
+int sra(int x, int k) {
+  
+}
+
+int main(int argc, char *argv[]) {
+
+
+  return 0;
+}

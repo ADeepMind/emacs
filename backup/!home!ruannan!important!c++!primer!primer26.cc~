@@ -1,0 +1,49 @@
+#include <string>
+#include <vector>
+#include "widget.h"
+#include <algorithm>
+#include <utility>
+
+int main(void) {
+
+  auto time_func_invocation =
+    [](auto&& func, auto&&... params) {
+      std::forward<decltype(func)>(func)
+	(std::forward<decltype(params)>(params)...);
+    };
+
+  
+  return 0;
+}
+
+// c++ 14
+template <typename T> decltype(auto) move1(T &&param) {
+  using return_type = std::remove_reference_t<T>&&;
+  return static_cast<return_type>(param);
+}
+
+template <typename T> typename std::remove_reference<T>::type &&move(T &&param) {
+  using return_type = typename std::remove_reference<T>::type&&;
+  return static_cast<return_type>(param);
+}
+
+struct Widget::Impl {
+  std::string name;
+  std::vector<int> data;
+};
+
+Widget::Widget() : pImpl(std::make_unique<Impl>()){}
+Widget::~Widget() = default;
+
+Widget::Widget(Widget&& rhs) = default;
+
+Widget& Widget::operator=(Widget&& rhs) = default;
+
+Widget::Widget(const Widget& rhs) :
+  pImpl(std::make_unique<Impl>(*rhs.pImpl)){}
+
+Widget& Widget::operator=(const Widget& rhs){
+  *pImpl = *rhs.pImpl;
+  return *this;
+};
+

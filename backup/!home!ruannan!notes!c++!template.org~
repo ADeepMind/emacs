@@ -1,0 +1,52 @@
+#+TITLE: Templates and Generic Programming
+#+AUTHOR: Bei Fang
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style.css"/>
+
+* Function Templates
+** Define a Function Template
+We define a compare function. As follow :
+#+BEGIN_SRC c++
+template <typename T>
+int compare(const T &v1, const T &v2) {
+    if (v1 < v2) return -1;
+    if (v1 > v2) return 1;
+    return 0;
+}
+#+END_SRC
+A template definition starts with the keyword template followed by a template
+parameter list, note that the template parameter list cannot be empty. The keyword
+typename can be replaced by keyword class. T is a general type. Which actual
+type T represents is determined at complie time base on how compare is used.
+** Instantiating a Function Template
+#+BEGIN_SRC c++
+cout << compare(1, 0) << endl; // T is int
+#+END_SRC
+When we call a function template, the compiler uses the arguments of the
+call to deduce the template argument(s) for us. The above code indicates
+the arguments have type int. The compiler will deduce int as the template
+argument and will bind that argument to the template parameter T.
+** Nontype Template Parameters
+A nontype parameter represents a value rather than a type. As an example, 
+we can write a version of compare that will handle string literals, as follow :
+#+BEGIN_SRC c++
+template <unsigned N, unsigned M>
+int compare(const char (&p1)[N], const char (&p2)[M]) {
+    return strcmp(p1, p2);
+}
+#+END_SRC
+When we call this version of compare :
+#+BEGIN_SRC c++
+compare("hello", "world")
+#+END_SRC
+the compiler will use the size of the literals to instantiate a version of the
+template with the sizes substituted for N and M. the compiler will instantiate
+#+BEGIN_SRC c++
+int compare(const char (&p1)[6], const char (&p2)[6])
+#+END_SRC
+Because the compiler inserts a null terminator at the end of a string literal, so
+it's six.
+
+A nontype parameter may be an integral type, or a pointer or (lvalue)reference to an object
+or to a funtion type. An argument bound to a nontype integral parameter must be a constant
+expression. Arguments bound to a pointer or reference nontype parameter must have static
+lifetime()

@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/sysinfo.h>
+
+#define __USE_GNU
+#include <sched.h>
+#include <string.h>
+#include <ctype.h>
+#include <pthread.h>
+#define THREAD_MAX_NUM 100
+
+int num = 0;
+int main(int argc, char *argv[]) {
+
+
+  return 0;
+}

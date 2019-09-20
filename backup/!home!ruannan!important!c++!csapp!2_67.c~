@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int int_size_is_32() {
+  return !((int)((unsigned)-1 >> 1));
+}
+
+int main(int argc, char *argv[]) {
+  //  int a = 0x80000000;
+  //  printf("%d\n", a);
+  return 0;
+}

@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef unsigned char* byte_pointer;
+
+void show_bytes(byte_pointer start, size_t len) {
+  size_t i;
+  for (i = 0; i < len; ++i) {
+    printf(" %.2x", start[i]);
+  }
+  printf("\n");
+}
+
+void show_short(short x) {
+  show_bytes((byte_pointer) &x, sizeof(x));
+}
+
+void show_long(long x) {
+  show_bytes((byte_pointer) &x, sizeof(x));
+}
+
+void show_double(double x) {
+  show_bytes((byte_pointer) &x, sizeof(x));
+}
+
+int main(void) {
+  //  float d = 23.912;
+  //  printf("%f\n", d);
+  show_short(2);
+  show_long(455423);
+  show_double(34.0);
+}

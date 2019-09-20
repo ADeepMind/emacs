@@ -1,0 +1,10 @@
+#+TITLE: Table Contents
+#+AUTHOR: Bei Fang
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./style1.css"/>
+#+OPTIONS: ':nil *:nil -:nil ::nil <:nil H:3 \n:nil ^:nil
+#+OPTIONS: author:t c:t creator:comment d:(not "LOGBOOK") date:t
+#+OPTIONS: e:nil email:nil f:nil inline:nil num:t p:nil pri:nil stat:nil
+#+OPTIONS: tags:nil tasks:nil tex:nil timestamp:t toc:nil todo:nil |:nil
+
+* Translation
++ [[https://adeepmind.github.io/translate/volatile.html][为什么不使用"volatile"]]

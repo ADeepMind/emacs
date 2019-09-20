@@ -65,7 +65,7 @@
 
 (defvar yt-iframe-format
   ;; You may want to change your width and height.
-  (concat "<iframe width=\"100\%\""
+  (concat "<iframe width=\"100%\""
           " height=\"100%\""
           " src=\"https://www.youtube.com/embed/%s\""
           " frameborder=\"0\""

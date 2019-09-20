@@ -1,0 +1,54 @@
+#include <iostream>
+#include <memory>
+#include <vector>
+#include <string>
+
+
+class Widget {};
+
+auto spw = std::make_shared<Widget>(); // RC is 1
+std::weak_ptr<Widget> wpw(spw); // RC remains 1
+
+
+class Investment {};
+class Stock : public Investment {};
+class Bond : public Investment {};
+class RealEstate : public Investment {};
+
+auto delInvmt = [](Investment* pInvestment) {
+		  delete pInvestment;
+		};
+
+template <typename... Ts>
+std::unique_ptr<Investment, decltype(delInvmt)>
+makeInvestment(Ts&&... params) {
+  std::unique_ptr<Investment, decltype(delInvmt)> pInv(nullptr, delInvmt);
+  return pInv;
+}
+
+// std::shared_ptr<Investment> spw(new Investment, delInvmt);
+
+template<typename T, typename... Ts>
+std::unique_ptr<T> make_unique(Ts&&... params) {
+  return std::unique_ptr<T>(new T(std::forward<Ts>(params)...));
+}
+
+
+class A {
+public:
+  A() {
+    std::cout << "hhel" << std::endl;
+  }
+  int b;
+  int c;
+};
+
+int main(void) {
+  A a;
+
+  //  spw = nullptr; // wpw now dangles
+  //  auto spw2 = wpw.lock(); // if wpw's expired, spw2 is null
+  //  int *a = nullptr;
+  //  delete a;
+  return 0;
+}

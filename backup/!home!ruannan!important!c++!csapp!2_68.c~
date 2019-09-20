@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int lower_one_mask(int n) {
+  
+}
+
+int main(int argc, char *argv[]) {
+
+
+  return 0;
+}

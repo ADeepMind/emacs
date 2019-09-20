@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int xbyte(unsigned word, int bytenum) {
+  
+}
+
+int main(int argc, char *argv[]) {
+
+
+  return 0;
+}

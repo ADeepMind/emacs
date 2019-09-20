@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: main_v
+# key: main_v
+# --
+
+int main(void) {
+
+    return 0;
+}

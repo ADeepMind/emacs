@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <atomic>
+
+using namespace std;
+
+constexpr int Max = 200;
+int lookup[Max][Max];
+
+vector<string> all_lcs(string x, string y, int m, int n) {
+  if (m == 0 || n == 0) {
+    vector<string> v(1);
+    return v;
+  }
+  if (x[m-1] == y[n-1]) {
+    vector<string> lcs = all_lcs(x, y, m-1, n-1);
+    for (string &str : lcs)
+      str.push_back(x[m-1]);
+    return lcs;
+  }
+
+  if (lookup[m-1][n] > lookup[m][n-1])
+    return all_lcs(x, y, m-1, n);
+  if (lookup[m][n-1] > lookup[m-1][n])
+    return all_lcs(x, y, m, n-1);
+
+  vector<string> top = all_lcs(x, y, m-1, n);
+  vector<string> left = all_lcs(x, y, m, n-1);
+  top.insert(top.end(), left.cbegin(), left.cend());
+  return top;
+}
+
+void lcs_length(string x, string y, int m, int n) {
+
+  for (int i = 1; i <= m; ++i) {
+    for (int j = 1; j <= n; ++j) {
+      if (x[i-1] == y[j-1])
+	lookup[i][j] = lookup[i-1][j-1] + 1;
+      else
+	lookup[i][j] = max(lookup[i-1][j], lookup[i][j-1]);
+    }
+  }
+}
+
+int main(int argc, char *argv[]) {
+
+  string x, y;
+  cin >> x >> y;
+  lcs_length(x, y, x.length(), y.length());
+  vector<string> all = all_lcs(x, y, x.length(), y.length());
+  set<string> s(make_move_iterator(all.cbegin()),
+		make_move_iterator(all.cend()));
+  for (const string &t : s)
+    cout << t << "\n";
+  return 0;
+}

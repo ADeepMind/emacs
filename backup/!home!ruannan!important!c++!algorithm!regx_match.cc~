@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+
+
+bool isMatch(string s, string p) {
+
+  vector<string> split;
+  int l = 0;
+  for (int i = 0; i < p.length(); ++i) {
+    if (p[i] == '*') {
+      split.push_back(p.substr(l, i-l+1));
+      l = i+1;
+    }
+  }
+  if (l != p.length())
+    split.push_back(p.substr(l, p.length()-l+1));
+
+  
+  for (auto &t : split)
+    cout << t << endl;
+  return true;
+}
+
+int main(int argc, char *argv[]) {
+
+  string s, p;
+  while (1) {
+    cin >> s;
+    cin >> p;
+    cout << isMatch(s, p) << endl;
+  }
+  
+
+  return 0;
+}

@@ -1,0 +1,7 @@
+#include "1.h"
+#include <iostream>
+
+template <typename T>
+A<T>::A(int a) {
+  std::cout << a << std::endl;
+}

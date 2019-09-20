@@ -1,0 +1,53 @@
+#include <iostream>
+#include <utility>
+#include <type_traits>
+#include <typeinfo>
+#include <algorithm>
+#include <iterator>
+
+using std::cout;
+using std::endl;
+
+using Matrix = float[3][3];
+
+struct Default { int foo() const { return 1; }};
+struct NonDefault {
+  NonDefault(const NonDefault&) {}
+  int foo() const { return 1;}
+};
+
+template<typename A>
+void foo(const A&) {
+  using Type = typename std::remove_all_extents<A>::type;
+  cout << "underlying type: " << typeid(Type).name() << endl;
+}
+
+template<typename A>
+typename std::enable_if<std::rank<A>::value == 1>::type
+print_1d(const A& a) {
+  copy(a, a+std::extent<A>::value,
+       std::ostream_iterator<typename std::remove_extent<A>::type>(std::cout, " "));
+  cout << "\n";
+}
+
+int main(void) {
+  int a[][3] = {{1, 2, 3}, {4, 5, 6}};
+  print_1d(a[1]);
+
+
+  float a1[1][2][3];
+  int a2[3][2];
+  float a3[1][2][3][4];
+  double a4[2][3];
+  foo(a1);
+  foo(a2);
+  foo(a3);
+  foo(a4);
+  
+  decltype(Default().foo()) n1 = 1;
+  decltype(std::declval<NonDefault>().foo()) n2 = 1;
+  cout << n1 << "\n"
+       << n2 << endl;
+  cout << sizeof(Matrix) / sizeof(std::remove_all_extents_t<Matrix>) << endl;
+  return 0;
+}
