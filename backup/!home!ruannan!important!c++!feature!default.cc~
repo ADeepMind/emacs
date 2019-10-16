@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+
+class SimpleValue {
+  int value_;
+public:
+  ~SimpleValue() = default;
+  SimpleValue();
+  SimpleValue(const SimpleValue&) = default;
+  SimpleValue& operator=(const SimpleValue&) = default;
+  SimpleValue(SimpleValue&&) = delete;
+  SimpleValue& operator=(SimpleValue&&) = delete;
+  explicit SimpleValue(int value);
+};
+
+int main(void) {
+
+  return 0;
+}
