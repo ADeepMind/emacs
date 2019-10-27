@@ -1,0 +1,20 @@
+#include <string>
+
+using namespace std;
+
+int power(int x, int y) {
+  int result = 1; 
+  while (y) {
+    if (y & 1)
+      result = result * x;
+    y = y >> 1;
+    x = x * x;
+  }
+  return result;
+}
+
+
+int main(void) {
+  cout << power(0, 3);
+  return 0;
+}

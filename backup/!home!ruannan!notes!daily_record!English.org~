@@ -1,9 +1,7 @@
-# -*- mode: snippet -*-
-# name: head
-# key: head
-# --
 #+TITLE:
 #+AUTHOR: Jokii Joy
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style.css"/>
 #+OPTIONS: ^:nil
 [[https://Jokii-Joy.github.io/index.html][Home]]
+
+<2019-10-20 Sun>
