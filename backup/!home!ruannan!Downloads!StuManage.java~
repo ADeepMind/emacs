@@ -1,0 +1,89 @@
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
+
+import javax.swing.*;
+
+
+class Student implements Serializable {
+	private String clazz;
+	private String name;
+	private String stuNo;
+        public Student(String clazz, String name, String stuNo) {
+	    this.clazz = clazz;
+	    this.name = name;
+	    this.stuNo = stuNo;
+        }
+	@Override
+	public String toString() {
+		return "Student [clazz=" + clazz + ", name=" + name + ", stuNo="
+				+ stuNo + "]";
+	}
+	
+}
+
+public class StuManage extends JFrame implements ActionListener {
+	static JFrame f = new JFrame("学生管理");
+	static JButton jb = new JButton("保存");
+	static JTextField jt1 = new JTextField();
+	static JTextField jt2 = new JTextField();
+	static JTextField jt3 = new JTextField();
+	public void actionPerformed(ActionEvent e){
+	    showDialog();
+	}
+
+        private void showDialog() {
+		JFileChooser jfc=new JFileChooser();
+		jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );
+		jfc.showDialog(new JLabel(), "确定");
+		File file=jfc.getSelectedFile();
+		fileSave(file.getAbsolutePath());
+
+	}
+    
+	private void fileSave(String absolutePath) {
+		Student student=new Student(jt1.getText(),jt2.getText(),jt3.getText());
+		try {
+			FileOutputStream fos = new FileOutputStream(absolutePath);
+			fos.write(student.toString().getBytes());
+			fos.close();
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}
+	}
+    
+	public StuManage() {
+		JPanel p1 = new JPanel();
+		JPanel p2 = new JPanel();
+		JPanel p3 = new JPanel();
+		JLabel jl1 = new JLabel("班级");
+		JLabel jl2 = new JLabel("学号");
+		JLabel jl3 = new JLabel("姓名");
+		
+		p1.add(jl1);
+		p1.add(jl2);
+		p1.add(jl3);
+		p2.add(jt1);
+		p2.add(jt2);
+		p2.add(jt3);
+		
+		p1.setLayout(new GridLayout(3, 1));
+		p2.setLayout(new GridLayout(3, 1));
+		p3.add(p1);
+		p3.add(p2);
+		p3.setLayout(new GridLayout(1, 2));
+		f.add(p3, BorderLayout.CENTER);
+		f.add(jb, BorderLayout.SOUTH);
+		f.setLocationRelativeTo(null);
+		f.setSize(400, 150);
+		f.setVisible(true);
+		jb.addActionListener(this);
+	}
+	
+	public static void main(String args[]) {
+		StuManage sm = new StuManage();
+		
+	}
+}

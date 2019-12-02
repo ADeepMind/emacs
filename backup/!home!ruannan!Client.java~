@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
+
+public class Client {
+	String line;
+
+	public static void main(String[] args) {
+		Client client=new Client();
+		client.test();
+	}
+	private void test() {		
+		try {
+			// TODO Auto-generated method stub
+			Socket s = new Socket("127.0.0.1", 4321);
+			PrintStream out=new PrintStream(s.getOutputStream());
+			InputStreamReader ins=new InputStreamReader(System.in);
+			BufferedReader in =new BufferedReader(ins);
+			System.out.println("请输入用户名：");
+			String name=in.readLine();
+			out.println(name);
+			while (!(line=in.readLine()).equals("end")) {
+	            	out.println(line);
+	            	out.flush();
+	                System.out.println(name+":" + line+"\n");
+	            } 
+			in.close();
+			out.close();
+			s.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}	
+	}
+}

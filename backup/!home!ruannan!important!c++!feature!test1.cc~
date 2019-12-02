@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+class A {
+public:
+  void say() {
+    cout << "A" << endl;
+  }
+};
+
+class B : public A{
+public:
+  void say() {
+    cout << "B" << endl;
+  }
+};
+int main(int argc, char *argv[]) {
+
+  return 0;
+}

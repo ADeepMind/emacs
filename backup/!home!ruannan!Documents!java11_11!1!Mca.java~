@@ -1,0 +1,13 @@
+import java.io.*;
+import java.net.*;
+
+public class Mca {
+    try {
+	Socket s = new Socket("127.0.0.1", 4321);
+	PrintStream out = new PrintStream(s.getOutputStream());
+	out.println("Hello server");
+	InputStreamReader ins = new InputStreamReader(s.getInputStream()); 
+    } catch (Exception e) {
+	
+    }
+}

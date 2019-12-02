@@ -1,0 +1,24 @@
+package homework;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class client {
+  public static void main(String[] args) throws UnknownHostException, IOException {
+	Socket socket=new Socket("127.0.0.1",9999);
+	PrintStream out=new PrintStream(socket.getOutputStream());
+	out.print("java?");
+	InputStreamReader ins=new InputStreamReader(socket.getInputStream());
+	BufferedReader in=new BufferedReader(ins);
+	String s=in.readLine();
+	System.out.println(s);
+	in.close();
+	out.close();
+	socket.close();
+}
+	
+}

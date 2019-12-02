@@ -1,0 +1,110 @@
+
+public class SellTickets {
+	
+	int tickets_count = 100;
+	
+	public static void main(String args[]) throws InterruptedException {
+		SellTickets st = new SellTickets();
+		Window1 w1 = new Window1(st);
+		Window2 w2 = new Window2(st);
+		Window3 w3 = new Window3(st);
+		Window4 w4 = new Window4(st);
+		Thread t1 = new Thread(w1);
+		Thread t2 = new Thread(w2);
+		Thread t3 = new Thread(w3);
+		Thread t4 = new Thread(w4);
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+		
+		
+	}
+}
+
+
+class Window1 implements Runnable {
+	SellTickets s = null;
+	public Window1 (SellTickets s) {
+		this.s = s;
+	}
+	@Override
+	public void run() {
+		while (s.tickets_count > 0) {
+			synchronized(s) {
+				if(s.tickets_count > 0) {
+					System.out.println("窗口1 出售第 : " + s.tickets_count);
+					s.tickets_count--;
+				}
+			}
+		}
+		
+	}
+	
+}
+
+
+class Window2 implements Runnable {
+
+	SellTickets s = null;
+	public Window2 (SellTickets s) {
+		this.s = s;
+	}
+	@Override
+	public void run() {
+		while (s.tickets_count > 0) {
+			synchronized(s) {
+				if(s.tickets_count > 0) {
+					System.out.println("窗口2 出售第 : " + s.tickets_count);
+					s.tickets_count--;
+				}
+			}
+		}
+		
+	}
+	
+}
+
+
+class Window3 implements Runnable {
+
+	SellTickets s = null;
+	public Window3 (SellTickets s) {
+		this.s = s;
+	}
+	@Override
+	public void run() {
+		while (s.tickets_count > 0) {
+			synchronized(s) {
+				if(s.tickets_count > 0) {
+					System.out.println("窗口3 出售第 : " + s.tickets_count);
+					s.tickets_count--;
+				}
+			}
+		}
+				
+	}
+	
+}
+
+
+class Window4 implements Runnable {
+
+	SellTickets s = null;
+	public Window4 (SellTickets s) {
+		this.s = s;
+	}
+	@Override
+	public void run() {
+		while (s.tickets_count > 0) {
+			synchronized(s) {
+				if(s.tickets_count > 0) {
+					System.out.println("窗口4 出售第 : " + s.tickets_count);
+					s.tickets_count--;
+				}
+			}
+		}
+		
+	}
+	
+}

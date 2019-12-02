@@ -37,6 +37,9 @@
   :ensure t
   :config (global-flycheck-mode))
 
+(use-package proof-general
+  :ensure t)
+
 ;; sudo apt install sbcl
 ;; sudo apt install slime
 ;; sudo apt install common-lisp-controller
@@ -85,7 +88,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (company company-c-headers company-tabnine company-lsp lsp-clangd ccls use-package cquery flycheck lsp-ui lsp-mode evil-nerd-commenter htmlize yasnippet slime)))
+    (proof-general company company-c-headers company-tabnine company-lsp lsp-clangd ccls use-package cquery flycheck lsp-ui lsp-mode evil-nerd-commenter htmlize yasnippet slime)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(yas-global-mode t))

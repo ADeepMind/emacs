@@ -1,0 +1,9 @@
+
+public class Queue {
+
+    int current;
+    int ticketNum;
+    public static void main(String args[]) {
+	
+    }
+}
