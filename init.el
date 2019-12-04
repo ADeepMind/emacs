@@ -4,6 +4,16 @@
 (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
 (package-initialize)
 
+;; Haskell
+;; Linux Terminal :
+;; curl -sSL https://get.haskellstack.org/ | sh
+;; stack setup
+;; stack install Cabal
+;; sudo apt install ghc
+;; emacs:
+;; M-x package-install RET haskell-mode
+;; M-x package-install RET intero
+;; M-x interactive-haskell-mode RET
 
 ;;company
 (use-package company
@@ -37,6 +47,8 @@
   :ensure t
   :config (global-flycheck-mode))
 
+;; sudo apt install coq
+;; M-x package-install RET proof-general
 (use-package proof-general
   :ensure t)
 
@@ -88,7 +100,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (proof-general company company-c-headers company-tabnine company-lsp lsp-clangd ccls use-package cquery flycheck lsp-ui lsp-mode evil-nerd-commenter htmlize yasnippet slime)))
+    (intero haskell-snippets scion ghc haskell-mode proof-general company company-c-headers company-tabnine company-lsp lsp-clangd ccls use-package cquery flycheck lsp-ui lsp-mode evil-nerd-commenter htmlize yasnippet slime)))
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(yas-global-mode t))

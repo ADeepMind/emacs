@@ -17,3 +17,6 @@ Definition next_weekday (d:day) : day :=
   | saturday ⇒ monday
   | sunday ⇒ monday
   end.
+
+Computer (next_weekday friday).
+
