@@ -1,4 +1,7 @@
 
+;;;; Foxit Reader
+;;;; sudo apt install ttf-wqy-zenhei
+
 ;; M-x package-refresh-contents
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)

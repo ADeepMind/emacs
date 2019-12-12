@@ -9,6 +9,11 @@
 ;; curl -sSL https://get.haskellstack.org/ | sh
 ;; stack setup
 ;; stack install Cabal
+;; sudo apt install ghc
+;; emacs:
+;; M-x package-install RET haskell-mode
+;; M-x package-install RET intero
+;; M-x interactive-haskell-mode RET
 
 ;;company
 (use-package company
